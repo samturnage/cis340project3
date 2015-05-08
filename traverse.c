@@ -1,19 +1,4 @@
-Skip to content
- This repository
-Explore
-Gist
-Blog
-Help
-@samturnage samturnage
- 
- Unwatch 2
-  Star 1
-  Fork 0
-samturnage/cis340project4
- branch: master  cis340project4/traverse.txt
-@DOWU10DOWU10 5 days ago Create traverse.txt
-1 contributor
-RawBlameHistory     159 lines (139 sloc)  4.296 kb
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -144,19 +129,19 @@ void traverse(int flag) {
 
   /* read the number of FATs and number of directory entries,
    * and the number of blocks for each FAT */
-  lseek(fd, 16, SEEK_SET);
-  read(fd, &num_fat, 1);
-  read(fd, &num_root_dir, 2);
-  lseek(fd, 22, SEEK_SET);
-  read(fd, &size_fat, 2);
+  lseek(3, 16, SEEK_SET);
+  read(3, &num_fat, 1);
+  read(3, &num_root_dir, 2);
+  lseek(3, 22, SEEK_SET);
+  read(3, &size_fat, 2);
 
   /* seek to the beginning of root directory */
-  lseek(fd, (1 + num_fat * size_fat) * 512, SEEK_SET);
+  lseek(3, (1 + num_fat * size_fat) * 512, SEEK_SET);
 
   /* now start to read the directory entries */
   for (i = 0; i < num_root_dir; i++) {
     memset(&de, 0, sizeof(de));
-    read(fd, &de, sizeof(de));
+    read(3, &de, sizeof(de));
     if (de.name[0] == SLOT_EMPTY) {
       /* this slot has not been used, means the end of the directory */
       break;
