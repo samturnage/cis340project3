@@ -19,14 +19,7 @@ char pathname[200] = "/bin";
 int i = 0;
 int j, k;
 
-void parse(char* input, char* arguments[]){
-	arguments[0] = strtok(input, "\n ");
-	i = 0;
-	do{
-		i++;
-		arguments[i] = strtok(NULL, "\n ");
-	}while(arguments[i] != NULL);  
-}
+
 
 char* path(char* arguments[]){
 	char* ptr;
@@ -85,7 +78,6 @@ char* path(char* arguments[]){
 
 int main(int argc, char **argv) {
 	char input[100];
-	char* chrptr;
 	char string[60] = "PATH="; 
 	char *arguments[10];
 	char *envp[2];
@@ -94,19 +86,27 @@ int main(int argc, char **argv) {
 	strcat(string, pathname);
 	envp[0] = string;
 	envp[1] = NULL;
+	fd = open("./imagefile.img", O_RDONLY);
+	if(fd == -1)
+	{
+		printf("\nError: File imagefile.img could not be opened\n");
+		exit(EXIT_FAILURE);
+	}
 	while(1){
 		printf("\nfloppy: ");
-		chrptr = fgets(input, 100, stdin);
-		if(chrptr == NULL){
+		fgets(input, 100, stdin);
+	        
+	        int m = 0;
+	        arguments[0] = strtok(input, "\n ");
+		while(arguments[m] != NULL)
+		{
+			m++;
+			arguments[m] = strtok(NULL, "\n ");
+		}
+		if(input == NULL){
 			printf("\nError: could not read input\n");
 		}
-		fd = open("./imagefile.img", O_RDONLY);
-		if(fd == -1)
-		{
-			printf("\nError: File imagefile.img could not be opened\n");
-			exit(EXIT_FAILURE);
-		}
-		parse(input, arguments);
+		
 		if(strcmp(arguments[0], "cd") == 0){
 			chdir(arguments[1]);
 			printf("\nCurrent working directory is now %s\n", arguments[1]);
@@ -146,13 +146,13 @@ int main(int argc, char **argv) {
                                 int out;
 				if(arguments[1] != NULL && strcmp(arguments[1], ">") == 0 && arguments[2] != NULL)
                                 {
-                                        out = open(arguments[2], O_CREAT,0666);
+                                        out = open(arguments[2], O_CREAT);
                                         dup2(out, 1);
                                         redirected = 1;
                                 }
                                 else if(arguments[2]!= NULL && strcmp(arguments[2], ">") == 0 && arguments[3] != NULL)   
                                 {
-                                        out = open(arguments[3], O_CREAT,0666);
+                                        out = open(arguments[3], O_CREAT);
                                         dup2(out, 1); 
                                         redirected = 1; 
                                 }
