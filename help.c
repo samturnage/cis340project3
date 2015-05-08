@@ -4,6 +4,8 @@ int main()
 {
       printf("\nCommands: \n\n ");
       printf("help - Displays useable commands \n ");
+      printf("cd [directory] - changes the directory\n");
+      printf("path - edits the path");
       printf("traverse [-l] - Display the root directory contents (with the option to show more info) \n ");
       printf("showfat - Display content of the FAT tables \n ");
       printf("showsector [sector #] - Show content of the sector \n ");
