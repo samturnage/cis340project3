@@ -7,10 +7,8 @@ Shell and commands work for the most part, allowing you to examine a floppy imag
 
 Member Contributions:
 
-	Turnage, Samuel		s.turnage@vikes.csuohio.edu	33%
-	Lu, Tian		T.LU25@vikes.csuohio.edu	33%
-	Sesek, Sarah		S.SESEK@vikes.csuohio.edu	34%
-
+	Turnage, Samuel		s.turnage@vikes.csuohio.edu	100%
+	I worked on the project 3 redo alone to try and better my personal grade
 Compilation:
 	$make clean
 	$make
