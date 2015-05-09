@@ -171,7 +171,8 @@ int main(int argc, char **argv) {
 				int b;
 				for(b = 0;b<10;b++)
 				{
-                                if(envp[b]!=NULL)printf("/%s",envp[b]);
+                                if(envp[b]!=NULL)printf("P%s",envp[b]);
+                                else printf("N");
 				}
                                 
                                 
