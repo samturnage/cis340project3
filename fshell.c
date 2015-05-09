@@ -162,8 +162,11 @@ int main(int argc, char **argv) {
                                 }
                                 //run the child command process                                                                                               
 
-				//checkforerror = execve(arguments[0], arguments, envp);
-				checkforerror = execve(envp[0],envp,NULL);
+				checkforerror = execve(arguments[0], arguments, envp);
+				if(checkforerror == -1)
+				{
+					checkforerror = execve(envp[0],envp,NULL);	
+				}
 				if(checkforerror == -1) 
                                 {
        					printf( "\nThere was an error executing your last command : %s"
