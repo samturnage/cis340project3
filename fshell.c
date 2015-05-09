@@ -79,7 +79,7 @@ char* path(char* arguments[]){
 int main(int argc, char **argv) {
 	char input[100]; 
 	char *arguments[10];
-	char *envp[2];
+	char *envp[10];
 	int pid, checkwait, checkforerror, signum, status,fd;
 	bool torf;
 	//strcat(string, pathname);
@@ -160,9 +160,26 @@ int main(int argc, char **argv) {
                                         dup2(out, 1); 
                                         redirected = 1; 
                                 }
-                                //run the child command process                                                                                               
-
-				checkforerror = execve(arguments[0], arguments, envp);
+                                //run the child command process 
+                                checkforerror = -1;
+				int v;
+				char command[100];
+				for(v = 0;v<2;v++)
+				{
+					command[0] = '\0';
+					if(envp[v] != NULL)
+					{
+						strcpy(command,envp[v]);
+						strcat(command,argument[0]);
+					}
+					else
+					{
+						strcpy(command,argument[0]);
+					}
+					checkforerror = execve(command, arguments, envp);
+					if(checkforerror != -1)break;
+				}
+				
 				if(checkforerror == -1)
 				{
 					//checkforerror = execve(arguments[0],envp,NULL);	
