@@ -169,13 +169,14 @@ int main(int argc, char **argv) {
 					envp[n] = strtok(NULL, "\n:");
 					
 				}
+				/*
 				int b;
 				for(b = 0;b<9;b++)
 				{
                                 if(envp[b]!=NULL)printf("P%s",envp[b]);
                                 else printf("N");
 				}
-                                
+                                */
                                 
                                 
                                 checkforerror = -1;
