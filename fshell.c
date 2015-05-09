@@ -111,7 +111,7 @@ int main(int argc, char **argv) {
 		
 		
 		if(strcmp(arguments[0], "exit") == 0){
-			break;
+			exit(EXIT_SUCCESS);
 		}
 		else if(strcmp(arguments[0], "cd") == 0){
 			chdir(arguments[1]);
@@ -144,9 +144,6 @@ int main(int argc, char **argv) {
 			}
 			else
 			{
-				if(strcmp(arguments[0], "exit") == 0){
-					exit(EXIT_SUCCESS);
-				}
 				//child
 				short redirected = 0;
                                 int out;
@@ -208,6 +205,7 @@ int main(int argc, char **argv) {
 						"\nType help for the help command if you are stuck.\n", arguments[0]);
 				}
 				if(redirected==1)close(out);
+				return(0);
 			}
 		}
 	}
