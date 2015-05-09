@@ -94,7 +94,7 @@ int main(int argc, char **argv) {
 	while(1){
 		input[0] = '\0';
 		
-		printf("\nfloppy: ");
+		printf("\nflop$");
 		fgets(input, 100, stdin);
 	        
 	        int m = 0;
@@ -108,16 +108,18 @@ int main(int argc, char **argv) {
 			printf("\nError: could not read input\n");
 		}
 		
-		if(strcmp(arguments[0], "cd") == 0){
+		
+		if(strcmp(arguments[0], "exit") == 0){
+			break;
+		}
+		else if(strcmp(arguments[0], "cd") == 0){
 			chdir(arguments[1]);
 			printf("\nCurrent working directory is now %s\n", arguments[1]);
 		}
 		else if(strcmp(arguments[0], "path") == 0){
 			path(arguments);
 		}
-		else if(strcmp(arguments[0], "exit") == 0){
-			exit(EXIT_SUCCESS);
-		}
+		 
 		else{
 			pid = fork();
 			//Error checking: if pid is negative forking failed
@@ -164,7 +166,7 @@ int main(int argc, char **argv) {
 				checkforerror = execve(envp[0],envp,NULL);
 				if(checkforerror == -1) 
                                 {
-       					printf("\n %s There was an error executing your last command."
+       					printf( "\nThere was an error executing your last command : %s"
 						"\nCheck that you typed name of the command and its arguments are correctly. "
 						"\nType help for the help command if you are stuck.\n", arguments[0]);
 				}
