@@ -15,7 +15,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-char pathname[200] = "/bin";
+char pathname[200] = "/bin/";
 int i = 0;
 int j, k;
 
