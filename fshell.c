@@ -81,7 +81,7 @@ int main(int argc, char **argv) {
 	char *arguments[10];
 	char *envp[10];
 	envp[0] = "/bin";
-	envp[1] = NULL:
+	envp[1] = NULL;
 	envp[9] = NULL;
 	int pid, checkwait, checkforerror, signum, status,fd;
 	bool torf;
