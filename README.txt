@@ -1,64 +1,128 @@
-Description: 
+Project 3 Redo
 
+This is the project 3 redo for extra points. Thanks for the great semester.
+-Samuel Turnage 2579621
+
+Description: 
+///////////////////////////////////////////////////////////
 A floppy reading program that, using a shell, is able to read a local floppy file or image
 and give information on its structure, files, FAT tables, and sectors.
 
 Shell and commands work for the most part, allowing you to examine a floppy image using commands and navigating a shell
 
 Member Contributions:
-
+///////////////////////////////////////////////////////////
 	Turnage, Samuel		s.turnage@vikes.csuohio.edu	100%
 	I worked on the project 3 redo alone to try and better my personal grade
+	
 Compilation:
+///////////////////////////////////////////////////////////
+	To clean up
 	$make clean
+	
+	To compile
 	$make
+	
+	To run
 	./fshell
+	
 
 Bugs:
-
-	fshell:
-		Cannot delete the first path "/bin" without deleting the entire pathname
-		cannot find binaries for ls and other commands even when they are on the path
-	small formatting bugs in showfat and showsector
-	traverse reading an extra file
-	output redirection is very close, but files don't show the output?
+///////////////////////////////////////////////////////////
 	pipeline code is written in pipeline.c, but not implemented
 	
 Sample Run:(More than shown works, this is just a sample)
-	
+///////////////////////////////////////////////////////////	
 
-samturnage4: ~/SystemsProgrammingProject3 $ ./fshell
+samturnage4: ~/cis340project3 $ ./fshell
  
-floppy: traverse -l
-*****************************
-** FILE ATTRIBUTE NOTATION **
-** **
-** R ------ READ ONLY FILE **
-** S ------ SYSTEM FILE **
-** H ------ HIDDEN FILE **
-** A ------ ARCHIVE FILE **
-*****************************
-ATTRIB  DATE            TIME            SIZE    SECTOR  NAME
-/-A--- 10/29/2002       13:13:05        670     3       A.CLA
-/-A--- 10/29/2002       13:13:05        763     5       ALOOP1.CLA
-/-A--- 10/29/2002       13:13:05        333     7       ALOOP1.JAV
-/-A--- 10/29/2002       13:13:05        786     8       ALOOP2.CLA
-/-A--- 10/29/2002       13:13:05        404     10      ALOOP2.JAV
-/-A--- 10/29/2002       13:13:05        786     11      ALOOP3.CLA
-/-A--- 10/29/2002       13:13:05        408     13      ALOOP3.JAV
-/-A--- 10/29/2002       13:13:05        358     14      B.CLA
-/-A--- 10/29/2002       13:13:05        1067    15      CONDIT.CLA
-/-A--- 10/29/2002       13:13:05        444     18      CONDIT.JAV
-/-A--- 10/29/2002       13:13:05        508     19      D.CLA
-/-A--- 10/29/2002       13:13:05        967     20      DEMO.CLA
-/-A--- 10/29/2002       13:13:05        648     22      DEMO.JAV
-/D---- 10/29/2002       13:13:05        0       24      DIR1            <DIR>
-/-A--- 10/29/2002       13:13:05        630     28      POLYTEST.CLA
-/-A--- 10/29/2002       13:13:05        1063    30      POLYTEST.JAV
-/-A--- 10/29/2002       13:13:05        226     33      SOME.CLA
-/-A--- 10/29/2002       13:13:05        278     34      OME~1.JAV
+flop$pwd
+/home/samturnage4/cis340project3
  
-floppy: showsector 10
+flop$path
+ 
+Current Paths(seperated by a :): /bin
+ 
+flop$path + /test
+ 
+flop$path
+ 
+Current Paths(seperated by a :): /bin:/test
+ 
+flop$path - /test
+ 
+flop$path
+ 
+Current Paths(seperated by a :): /bin
+ 
+flop$help
+ 
+Commands: 
+ 
+ help - Displays useable commands 
+ cd [directory] - changes the directory
+ path - edits the path
+ traverse [-l] - Display the root directory contents (with the option to show more info) 
+ showfat - Display content of the FAT tables 
+ showsector [sector #] - Show content of the sector 
+ exit - Quit out of the floppy shell 
+ 
+ 
+flop$ls
+README.txt  fshell  fshell.c  fshell.o  help  help.c  help.o  imagefile.img  makefile  pipeline.c  showfat  showfat.c  showfat.o  showsector  showsector.c  showsector.o  traverse  traverse.c  traverse.o
+ 
+flop$cd ..
+ 
+Current working directory is now ..
+ 
+flop$ls
+Applications  Backup  CIS-340-Project1  CISproject2  Documents  README.md  SystemsProgrammingProject3  Uploads  Web  cis340project3  cis340project4
+ 
+flop$cd ./cis340project3
+ 
+Current working directory is now ./cis340project3
+ 
+flop$help
+ 
+Commands: 
+ 
+ help - Displays useable commands 
+ cd [directory] - changes the directory
+ path - edits the path
+ traverse [-l] - Display the root directory contents (with the option to show more info) 
+ showfat - Display content of the FAT tables 
+ showsector [sector #] - Show content of the sector 
+ exit - Quit out of the floppy shell 
+ 
+ 
+flop$traverse -l
+        *****************************
+        ** FILE ATTRIBUTE NOTATION **
+        **                         **
+        ** R ------ READ ONLY FILE **
+        ** S ------ SYSTEM FILE    **
+        ** H ------ HIDDEN FILE    **
+        ** A ------ ARCHIVE FILE   **
+        *****************************
+-A--    10/27/2014 13:13:10            670      /A.CLA
+-A--    10/27/2014 13:13:10            763      /ALOOP1.CLA
+-A--    10/27/2014 13:13:10            333      /ALOOP1.JAV
+-A--    10/27/2014 13:13:10            786      /ALOOP2.CLA
+-A--    10/27/2014 13:13:10            404      /ALOOP2.JAV
+-A--    10/27/2014 13:13:10            786      /ALOOP3.CLA
+-A--    10/27/2014 13:13:10            408      /ALOOP3.JAV
+-A--    10/27/2014 13:13:10            358      /B.CLA
+-A--    10/27/2014 13:13:10           1067      /CONDIT.CLA
+-A--    10/27/2014 13:13:10            444      /CONDIT.JAV
+-A--    10/27/2014 13:13:10            508      /D.CLA
+-A--    10/27/2014 13:13:10            967      /DEMO.CLA
+-A--    10/27/2014 13:13:10            648      /DEMO.JAV
+----    10/27/2014 13:13:10     <DIR>           /DIR1
+-A--    10/27/2014 13:13:10            630      /POLYTEST.CLA
+-A--    10/27/2014 13:13:10           1063      /POLYTEST.JAV
+-A--    10/27/2014 13:13:10            226      /SOME.CLA
+ 
+flop$showsector 10
  
 Sector : 10
  
@@ -96,19 +160,7 @@ Sector : 10
  1E0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
  1F0 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
  
-floppy: help
+flop$exit
+samturnage4: ~/cis340project3 $  
+
  
-Commands: 
- 
- help - Displays useable commands 
- traverse [-l] - Display the root directory contents (with the option to show more info) 
- showfat - Display content of the FAT tables 
- showsector [sector #] - Show content of the sector 
- exit - Quit out of the floppy shell 
- 
- 
-floppy: cd
- 
-Current working directory is now (null)
- 
-floppy: exit
