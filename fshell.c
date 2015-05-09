@@ -34,7 +34,7 @@ char* path(char* arguments[]){
 			printf("\nTo append a string to the path you must include the string to append. Try again.\n");
 			return pathname;
 		}
-		strcat(pathname, ":");
+		if(pathname[0] != '\0')strcat(pathname, ":");
 		strcat(pathname, arguments[2]);
 		return pathname;
 	}
@@ -185,14 +185,11 @@ int main(int argc, char **argv) {
 					{
 						strcpy(command,arguments[0]);
 					}
+					printf("\nCommand:%s",command);
 					checkforerror = execve(command, arguments, envp);
 					if(checkforerror != -1)break;
 				}
 				
-				if(checkforerror == -1)
-				{
-					//checkforerror = execve(arguments[0],envp,NULL);	
-				}
 				if(checkforerror == -1) 
                                 {
        					printf( "\nThere was an error executing your last command : %s"
