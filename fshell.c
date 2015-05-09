@@ -92,6 +92,8 @@ int main(int argc, char **argv) {
 		exit(EXIT_FAILURE);
 	}
 	while(1){
+		input = "\0";
+		
 		printf("\nfloppy: ");
 		fgets(input, 100, stdin);
 	        
