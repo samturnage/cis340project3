@@ -80,6 +80,7 @@ int main(int argc, char **argv) {
 	char input[100]; 
 	char *arguments[10];
 	char *envp[10];
+	envp[9] = NULL;
 	int pid, checkwait, checkforerror, signum, status,fd;
 	bool torf;
 	//strcat(string, pathname);
@@ -169,7 +170,7 @@ int main(int argc, char **argv) {
 					
 				}
 				int b;
-				for(b = 0;b<10;b++)
+				for(b = 0;b<9;b++)
 				{
                                 if(envp[b]!=NULL)printf("P%s",envp[b]);
                                 else printf("N");
@@ -180,7 +181,7 @@ int main(int argc, char **argv) {
                                 checkforerror = -1;
 				int v;
 				char command[100];
-				for(v = 0;v<10;v++)
+				for(v = 0;v<9;v++)
 				{
 					command[0] = '\0';
 					if(envp[v] != NULL)
