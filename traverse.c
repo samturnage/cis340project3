@@ -160,6 +160,14 @@ void traverse(int flag) {
 
 int main(int argc, char *argv[])
 {
-	traverse(atoi(argv[1]));
+	if(argc < 2)
+	{
+		traverse(0);	
+	}
+	else
+	{
+		traverse(1);
+	}
+	
 	return 1;
 }
