@@ -15,7 +15,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-char pathname[200] = "/bin/";
+char pathname[200] = "/bin";
 int i = 0;
 int j, k;
 
@@ -80,6 +80,8 @@ int main(int argc, char **argv) {
 	char input[100]; 
 	char *arguments[10];
 	char *envp[10];
+	envp[0] = "/bin";
+	envp[1] = NULL:
 	envp[9] = NULL;
 	int pid, checkwait, checkforerror, signum, status,fd;
 	bool torf;
@@ -160,7 +162,7 @@ int main(int argc, char **argv) {
                                         redirected = 1; 
                                 }
                                 //run the child command process 
-                                
+                                /*
                                 int n = 0;
 			        envp[0] = strtok(pathname, "\n ");
 				while(envp[n] != NULL)
@@ -169,6 +171,8 @@ int main(int argc, char **argv) {
 					envp[n] = strtok(NULL, "\n:");
 					
 				}
+				*/
+				
 				/*
 				int b;
 				for(b = 0;b<9;b++)
@@ -182,23 +186,30 @@ int main(int argc, char **argv) {
                                 checkforerror = -1;
 				int v;
 				char command[100];
-				for(v = 0;v<9;v++)
-				{
-					command[0] = '\0';
-					if(envp[v] != NULL)
+				
+				command[0] = '\0';
+				strcpy(command,arguments[0]);
+				checkforerror = execve(command, arguments, envp);
+				if(checkforerror == -1) 
+                                {
+	                                for(v = 0;v<9;v++)
 					{
-						strcpy(command,envp[v]);
-						strcat(command,"/");
-						strcat(command,arguments[0]);
-					}
-					else
-					{
-						strcpy(command,arguments[0]);
-					}
-					printf("\nCommand:%s",command);
-					//checkforerror = execve(command, arguments, envp);
-					if(checkforerror != -1)break;
-				}
+						command[0] = '\0';
+						if(envp[v] != NULL)
+						{
+							strcpy(command,envp[v]);
+							strcat(command,"/");
+							strcat(command,arguments[0]);
+						}
+						else
+						{
+							break;
+						}
+						printf("\nCommand:%s",command);
+						checkforerror = execve(command, arguments, envp);
+						if(checkforerror != -1)break;
+					}	
+                                }
 				
 				if(checkforerror == -1) 
                                 {
