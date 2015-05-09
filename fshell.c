@@ -146,14 +146,14 @@ int main(int argc, char **argv) {
                                 int out;
 				if(arguments[1] != NULL && strcmp(arguments[1], ">") == 0 && arguments[2] != NULL)
                                 {
-                                        out = open(arguments[2], O_CREAT,S_IRUSR|S_IRGRP|S_IROTH);
+                                        out = open(arguments[2], O_RDWR | O_CREAT,S_IRUSR|S_IRGRP|S_IROTH);
                                         close(1);
                                         dup(out);
                                         redirected = 1;
                                 }
                                 else if(arguments[2]!= NULL && strcmp(arguments[2], ">") == 0 && arguments[3] != NULL)   
                                 {
-                                        out = open(arguments[3], O_CREAT,S_IRUSR|S_IRGRP|S_IROTH);
+                                        out = open(arguments[3], O_RDWR | O_CREAT,S_IRUSR|S_IRGRP|S_IROTH);
                                         dup2(out, 1); 
                                         redirected = 1; 
                                 }
