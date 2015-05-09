@@ -194,7 +194,7 @@ int main(int argc, char **argv) {
 						strcpy(command,arguments[0]);
 					}
 					printf("\nCommand:%s",command);
-					checkforerror = execve(command, arguments, envp);
+					//checkforerror = execve(command, arguments, envp);
 					if(checkforerror != -1)break;
 				}
 				
