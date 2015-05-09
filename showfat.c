@@ -47,14 +47,14 @@ int main(int argc, char *argv[])
         for(i = 0; i < 512; ++i)
         {
             if(i % 16 == 0)
-                printf("\n %5X ",i);
+                printf("\n %03X ",i);
             if((unsigned char)buffer[i] == 0)
             {
                 printf("FREE ");
             }
             else
             {
-                printf("%5X  ", (unsigned char)buffer[i]);
+                printf("%03X  ", (unsigned char)buffer[i]);
             }
         }
     }
