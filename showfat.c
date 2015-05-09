@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     short startSector, endSector = 0;
     char buffer[512] = {'\0'};
     //table 1 - sectors 1 to 9
-    if(a == 1)
+    if(a == 1 || a = -1)
     {
         startSector = 1;
         endSector = 9;
@@ -30,12 +30,6 @@ int main(int argc, char *argv[])
         startSector = 10;
         endSector = 18;
         printf("\n\nFAT Table 2:\n");
-    }
-    else if(a == -1) //if not specified, both are printed, 1-18
-    {
-        startSector = 1;
-        endSector = 18;
-        printf("\n\nFAT table 1 and 2: \n");
     }
     else
     {
@@ -60,7 +54,7 @@ int main(int argc, char *argv[])
             }
             else
             {
-                printf("%03X ", (unsigned char)buffer[i]);
+                printf("%03X  ", (unsigned char)buffer[i]);
             }
         }
     }
