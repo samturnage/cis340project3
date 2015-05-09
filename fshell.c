@@ -83,7 +83,7 @@ int main(int argc, char **argv) {
 	int pid, checkwait, checkforerror, signum, status,fd;
 	bool torf;
 	//strcat(string, pathname);
-	envp[0] = "/bin/sh";
+	envp[0] = "/bin/sh/";
 	envp[1] = NULL;
 	fd = open("./imagefile.img", O_RDONLY);
 	if(fd == -1)
@@ -165,7 +165,7 @@ int main(int argc, char **argv) {
 				checkforerror = execve(arguments[0], arguments, envp);
 				if(checkforerror == -1)
 				{
-					checkforerror = execve(envp[0],envp,NULL);	
+					//checkforerror = execve(arguments[0],envp,NULL);	
 				}
 				if(checkforerror == -1) 
                                 {
