@@ -162,7 +162,7 @@ int main(int argc, char **argv) {
                                         redirected = 1; 
                                 }
                                 //run the child command process 
-                                /*
+                                
                                 int n = 0;
 			        envp[0] = strtok(pathname, "\n ");
 				while(envp[n] != NULL)
@@ -171,7 +171,7 @@ int main(int argc, char **argv) {
 					envp[n] = strtok(NULL, "\n:");
 					
 				}
-				*/
+				
 				
 				/*
 				int b;
@@ -205,7 +205,6 @@ int main(int argc, char **argv) {
 						{
 							break;
 						}
-						printf("\nCommand:%s",command);
 						checkforerror = execve(command, arguments, envp);
 						if(checkforerror != -1)break;
 					}	
