@@ -83,7 +83,6 @@ int main(int argc, char **argv) {
 	int pid, checkwait, checkforerror, signum, status,fd;
 	bool torf;
 	//strcat(string, pathname);
-	envp[9] = NULL;
 	fd = open("./imagefile.img", O_RDONLY);
 	if(fd == -1)
 	{
@@ -167,6 +166,7 @@ int main(int argc, char **argv) {
 				{
 					n++;
 					envp[n] = strtok(NULL, "\n:");
+					if(envp[n]!=NULL)printf("/%s",envp[n]);
 				}
                                 
                                 checkforerror = -1;
