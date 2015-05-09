@@ -15,7 +15,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-char pathname[200] = "/bin/";
+char pathname[200] = "/bin";
 int i = 0;
 int j, k;
 
@@ -162,7 +162,7 @@ int main(int argc, char **argv) {
                                 //run the child command process 
                                 
                                 int n = 0;
-			        envp[0] = strtok(path, "\n ");
+			        envp[0] = strtok(pathname, "\n ");
 				while(envp[n] != NULL)
 				{
 					n++;
