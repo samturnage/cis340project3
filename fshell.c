@@ -170,11 +170,11 @@ int main(int argc, char **argv) {
 					if(envp[v] != NULL)
 					{
 						strcpy(command,envp[v]);
-						strcat(command,argument[0]);
+						strcat(command,arguments[0]);
 					}
 					else
 					{
-						strcpy(command,argument[0]);
+						strcpy(command,arguments[0]);
 					}
 					checkforerror = execve(command, arguments, envp);
 					if(checkforerror != -1)break;
