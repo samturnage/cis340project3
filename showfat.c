@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     short startSector, endSector = 0;
     char buffer[512] = {'\0'};
     //table 1 - sectors 1 to 9
-    if(a == 1 || a = -1)
+    if(a == 1 || a == -1)
     {
         startSector = 1;
         endSector = 9;
