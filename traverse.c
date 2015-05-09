@@ -164,9 +164,13 @@ int main(int argc, char *argv[])
 	{
 		traverse(0);	
 	}
-	else
+	else if(strcmp(argv[1],"-l")==0)
 	{
 		traverse(1);
+	}
+	else
+	{
+		traverse(0);
 	}
 	
 	return 1;
