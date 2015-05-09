@@ -26,7 +26,7 @@ char* path(char* arguments[]){
 	char colonplus[50] = ":";
 	int length, endsubstring;
 	if(arguments[1] == NULL){
-		printf("\n%s\n", pathname);
+		printf("\nCurrent Paths(seperated by a :): %s\n", pathname);
 		return pathname; 
 	}
 	else if(strcmp(arguments[1], "+") == 0){
@@ -77,14 +77,13 @@ char* path(char* arguments[]){
 
 
 int main(int argc, char **argv) {
-	char input[100];
-	char string[60] = "PATH="; 
+	char input[100]; 
 	char *arguments[10];
 	char *envp[2];
 	int pid, checkwait, checkforerror, signum, status,fd;
 	bool torf;
 	strcat(string, pathname);
-	envp[0] = string;
+	envp[0] = "/bin/sh";
 	envp[1] = NULL;
 	fd = open("./imagefile.img", O_RDONLY);
 	if(fd == -1)
@@ -140,7 +139,7 @@ int main(int argc, char **argv) {
 			}
 			else
 			{
-
+				
 				//child
 				short redirected = 0;
                                 int out;
