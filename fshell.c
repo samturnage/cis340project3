@@ -83,7 +83,7 @@ int main(int argc, char **argv) {
 	int pid, checkwait, checkforerror, signum, status,fd;
 	bool torf;
 	//strcat(string, pathname);
-	envp[0] = "/bin/sh/";
+	envp[0] = "/bin/";
 	envp[1] = NULL;
 	fd = open("./imagefile.img", O_RDONLY);
 	if(fd == -1)
