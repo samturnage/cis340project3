@@ -15,7 +15,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-char pathname[200] = "/bin";
+char pathname[200] = "/bin/";
 int i = 0;
 int j, k;
 
@@ -83,8 +83,7 @@ int main(int argc, char **argv) {
 	int pid, checkwait, checkforerror, signum, status,fd;
 	bool torf;
 	//strcat(string, pathname);
-	envp[0] = "/bin/";
-	envp[1] = NULL;
+	envp[9] = NULL;
 	fd = open("./imagefile.img", O_RDONLY);
 	if(fd == -1)
 	{
@@ -161,15 +160,25 @@ int main(int argc, char **argv) {
                                         redirected = 1; 
                                 }
                                 //run the child command process 
+                                
+                                int n = 0;
+			        envp[0] = strtok(path, "\n ");
+				while(envp[n] != NULL)
+				{
+					n++;
+					envp[n] = strtok(NULL, "\n:");
+				}
+                                
                                 checkforerror = -1;
 				int v;
 				char command[100];
-				for(v = 0;v<2;v++)
+				for(v = 0;v<10;v++)
 				{
 					command[0] = '\0';
 					if(envp[v] != NULL)
 					{
 						strcpy(command,envp[v]);
+						strcat(command,"/");
 						strcat(command,arguments[0]);
 					}
 					else
