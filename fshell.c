@@ -82,7 +82,7 @@ int main(int argc, char **argv) {
 	char *envp[2];
 	int pid, checkwait, checkforerror, signum, status,fd;
 	bool torf;
-	strcat(string, pathname);
+	//strcat(string, pathname);
 	envp[0] = "/bin/sh";
 	envp[1] = NULL;
 	fd = open("./imagefile.img", O_RDONLY);
@@ -92,7 +92,7 @@ int main(int argc, char **argv) {
 		exit(EXIT_FAILURE);
 	}
 	while(1){
-		input = "\0";
+		input[0] = "\0";
 		
 		printf("\nfloppy: ");
 		fgets(input, 100, stdin);
