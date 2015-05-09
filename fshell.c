@@ -166,8 +166,15 @@ int main(int argc, char **argv) {
 				{
 					n++;
 					envp[n] = strtok(NULL, "\n:");
-					if(envp[n]!=NULL)printf("/%s",envp[n]);
+					
 				}
+				int b;
+				for(b = 0;b<10;b++)
+				{
+                                if(envp[b]!=NULL)printf("/%s",envp[b]);
+				}
+                                
+                                
                                 
                                 checkforerror = -1;
 				int v;
